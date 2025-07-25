@@ -1,20 +1,7 @@
 import { useState } from "react";
 
-function UserInput() {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: 10000,
-    annualInvestment: 1200,
-    expectedReturn: 6,
-    duration: 10,
-  });
-
-  function handleChange(inputId, newValue) {
-    setUserInput((prevState) => ({
-      ...prevState,
-      [inputId]: newValue,
-    }));
-  }
-
+function UserInput(props) {
+  const { onChange, userInput } = props;
   return (
     <form id="user-input">
       <div className="input-group">
@@ -25,7 +12,7 @@ function UserInput() {
             id="initial-investment"
             required
             value={userInput.initialInvestment}
-            onChange={(e) => handleChange("initialInvestment", e.target.value)}
+            onChange={(e) => onChange("initialInvestment", e.target.value)}
           />
         </p>
         <p>
@@ -35,7 +22,7 @@ function UserInput() {
             id="annual-investment"
             required
             value={userInput.annualInvestment}
-            onChange={(e) => handleChange("annualInvestment", e.target.value)}
+            onChange={(e) => onChange("annualInvestment", e.target.value)}
           />
         </p>
       </div>
@@ -47,7 +34,7 @@ function UserInput() {
             id="expect-return"
             required
             value={userInput.expectedReturn}
-            onChange={(e) => handleChange("expectedReturn", e.target.value)}
+            onChange={(e) => onChange("expectedReturn", e.target.value)}
           />
         </p>
         <p>
@@ -57,7 +44,7 @@ function UserInput() {
             id="duration"
             required
             value={userInput.duration}
-            onChange={(e) => handleChange("duration", e.target.value)}
+            onChange={(e) => onChange("duration", e.target.value)}
           />
         </p>
       </div>
